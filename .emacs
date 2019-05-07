@@ -12,7 +12,8 @@
 (setq inhibit-startup-screen 1)
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-(set-default-font "Fixedsys 12")
+;;(set-default-font "Fixedsys 12")
+(set-default-font "Ubuntu Mono Nerd Font Bold 14")
 
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -46,8 +47,9 @@
           (lambda ()
             (local-set-key (kbd "C-x E") 'eval-buffer)))
 
-(require 'base16-theme)
-(load-theme 'base16-google-light t)
+;; (require 'base16-theme)
+;; (load-theme 'base16-google-light t)
+(load-theme 'leuven t)
 
 (require 'smartparens-config)
 (smartparens-global-mode)
@@ -210,6 +212,7 @@
 ;;; Tramp setup
 (setq tramp-default-method "ssh")
 (setq tramp-connection-timeout 10)
+
 ;;; End of tramp setup
 
 (require 'php-mode)
