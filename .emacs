@@ -46,9 +46,7 @@
           (lambda ()
             (local-set-key (kbd "C-x E") 'eval-buffer)))
 
-(require 'base16-theme)
-(load-theme 'base16-google-light t)
-
+(load-theme 'leuven t)
 (require 'smartparens-config)
 (smartparens-global-mode)
 
@@ -213,21 +211,7 @@
 (customize-set-variable 'tramp-default-user "root")
 ;;; End of tramp setup
 
-(require 'php-mode)
-
-(add-hook 'php-mode-hook (lambda ()
-    (defun ywb-php-lineup-arglist-intro (langelem)
-      (save-excursion
-        (goto-char (cdr langelem))
-        (vector (+ (current-column) c-basic-offset))))
-    (defun ywb-php-lineup-arglist-close (langelem)
-      (save-excursion
-        (goto-char (cdr langelem))
-        (vector (current-column))))
-    (c-set-offset 'arglist-intro 'ywb-php-lineup-arglist-intro)
-    (c-set-offset 'arglist-close 'ywb-php-lineup-arglist-close)))
-
-(cd "/sshx:build-smolensk:/admin-api")
+(cd "/sshx:astra:/home/tm/largo-web/admin-spa")
 
 (custom-set-variables
  '(package-selected-packages (quote (dumb-jump vue-mode))))
