@@ -12,7 +12,8 @@
 (setq inhibit-startup-screen 1)
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-(set-default-font "Fixedsys 12")
+;; (set-default-font "Fixedsys 12")
+(set-default-font "Ubuntu Mono Nerd Font Bold 14")
 
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
