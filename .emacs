@@ -47,8 +47,7 @@
           (lambda ()
             (local-set-key (kbd "C-x E") 'eval-buffer)))
 
-(require 'base16-theme)
-(load-theme 'base16-google-light t)
+(load-theme 'leuven t)
 
 (require 'smartparens-config)
 (smartparens-global-mode)
