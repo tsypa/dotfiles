@@ -227,7 +227,7 @@
     (c-set-offset 'arglist-intro 'ywb-php-lineup-arglist-intro)
     (c-set-offset 'arglist-close 'ywb-php-lineup-arglist-close)))
 
-(cd "/sshx:build-smolensk:/admin-api")
+(cd "/sshx:astra:/admin-api")
 
 (custom-set-variables
  '(package-selected-packages (quote (dumb-jump vue-mode))))
