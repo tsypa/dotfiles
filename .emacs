@@ -232,7 +232,17 @@
 (cd "/sshx:yar:/home/tm/web-vue")
 
 (custom-set-variables
- '(package-selected-packages (quote (dumb-jump vue-mode))))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages (quote (stylus-mode dumb-jump vue-mode))))
 
 (provide '.emacs)
 ;;; .emacs ends here
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
