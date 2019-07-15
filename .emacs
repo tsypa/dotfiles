@@ -12,8 +12,11 @@
 (setq inhibit-startup-screen 1)
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; (set-default-font "Fixedsys 12")
-(set-default-font "Ubuntu Mono Nerd Font Bold 14")
+;;; (set-default-font "Dank Mono 14")
+;;; (set-default-font "ProFontWindows 16")
+;;; (set-default-font "Iosevka Bold 14")
+(set-default-font "Ubuntu Mono Bold 14")
+(set-default-font "Hack Nerd Font Mono Bold 13")
 
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -208,25 +211,9 @@
 (add-hook 'web-mode-hook  'my-web-mode-hook)
 
 ;;; Tramp setup
-(setq tramp-default-method "ssh")
+(setq tramp-default-method "sshx")
 (setq tramp-connection-timeout 10)
 (customize-set-variable 'tramp-default-user "root")
-;;; End of tramp setup
-
-(require 'php-mode)
-
-(add-hook 'php-mode-hook (lambda ()
-    (defun ywb-php-lineup-arglist-intro (langelem)
-      (save-excursion
-        (goto-char (cdr langelem))
-        (vector (+ (current-column) c-basic-offset))))
-    (defun ywb-php-lineup-arglist-close (langelem)
-      (save-excursion
-        (goto-char (cdr langelem))
-        (vector (current-column))))
-    (c-set-offset 'arglist-intro 'ywb-php-lineup-arglist-intro)
-    (c-set-offset 'arglist-close 'ywb-php-lineup-arglist-close)))
-
 (cd "/sshx:astra:/admin-api")
 
 (custom-set-variables
