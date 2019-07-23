@@ -209,7 +209,6 @@
 ;;; Tramp setup
 (setq tramp-default-method "ssh")
 (setq tramp-connection-timeout 10)
-(customize-set-variable 'tramp-default-user "root")
 ;;; End of tramp setup
 
 (cd "/sshx:astra:/home/tm/largo-web/admin-spa")
