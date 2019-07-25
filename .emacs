@@ -13,7 +13,8 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; (set-default-font "Fixedsys 12")
-(set-default-font "Hack Nerd Font Mono Bold 13")
+;;; (set-default-font "Hack Nerd Font Mono Bold 13")
+(set-default-font "Ubuntu Mono Bold 16")
 
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -21,6 +22,8 @@
        (proto (if no-ssl "http" "https")))
   ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
   (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+  (add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
   ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
   (when (< emacs-major-version 24)
     ;; For important compatibility libraries like cl-lib
@@ -28,6 +31,9 @@
 
 (package-initialize)
 
+(add-to-list 'load-path "~/.emacs.d/edit-indirect")
+(add-to-list 'load-path "~/.emacs.d/ssass-mode")
+(add-to-list 'load-path "~/.emacs.d/vue-mode")
 (add-to-list 'load-path "~/.emacs.d/el-get")
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
@@ -213,7 +219,6 @@
 
 (cd "/sshx:astra:/home/tm/largo-web/admin-spa")
 
-(custom-set-variables
- '(package-selected-packages (quote (dumb-jump vue-mode))))
+(require 'vue-mode)
 (provide '.emacs)
 ;;; .emacs ends here
