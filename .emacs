@@ -14,7 +14,7 @@
 
 ;; (set-default-font "Fixedsys 12")
 ;;; (set-default-font "Hack Nerd Font Mono Bold 13")
-(set-default-font "Ubuntu Mono Bold 16")
+(set-default-font "Ubuntu Mono Bold 14")
 
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
