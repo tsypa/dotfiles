@@ -12,11 +12,8 @@
 (setq inhibit-startup-screen 1)
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;;; (set-default-font "Dank Mono 14")
-;;; (set-default-font "ProFontWindows 16")
-;;; (set-default-font "Iosevka Bold 14")
 (set-default-font "Ubuntu Mono Bold 14")
-(set-default-font "Hack Nerd Font Mono Bold 13")
+;;; (set-default-font "ProFontWindows 16")
 
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
