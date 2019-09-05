@@ -12,8 +12,7 @@
 (setq inhibit-startup-screen 1)
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;;(set-default-font "Fixedsys 12")
-(set-default-font "Ubuntu Mono Nerd Font Bold 14")
+(set-default-font "Ubuntu Mono Bold 14")
 
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -21,6 +20,8 @@
        (proto (if no-ssl "http" "https")))
   ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
   (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+  (add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
   ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
   (when (< emacs-major-version 24)
     ;; For important compatibility libraries like cl-lib
@@ -28,6 +29,9 @@
 
 (package-initialize)
 
+(add-to-list 'load-path "~/.emacs.d/edit-indirect")
+(add-to-list 'load-path "~/.emacs.d/ssass-mode")
+(add-to-list 'load-path "~/.emacs.d/vue-mode")
 (add-to-list 'load-path "~/.emacs.d/el-get")
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
@@ -47,10 +51,7 @@
           (lambda ()
             (local-set-key (kbd "C-x E") 'eval-buffer)))
 
-;; (require 'base16-theme)
-;; (load-theme 'base16-google-light t)
 (load-theme 'leuven t)
-
 (require 'smartparens-config)
 (smartparens-global-mode)
 
@@ -212,37 +213,10 @@
 ;;; Tramp setup
 (setq tramp-default-method "ssh")
 (setq tramp-connection-timeout 10)
-
 ;;; End of tramp setup
-
-(require 'php-mode)
-
-(add-hook 'php-mode-hook (lambda ()
-    (defun ywb-php-lineup-arglist-intro (langelem)
-      (save-excursion
-        (goto-char (cdr langelem))
-        (vector (+ (current-column) c-basic-offset))))
-    (defun ywb-php-lineup-arglist-close (langelem)
-      (save-excursion
-        (goto-char (cdr langelem))
-        (vector (current-column))))
-    (c-set-offset 'arglist-intro 'ywb-php-lineup-arglist-intro)
-    (c-set-offset 'arglist-close 'ywb-php-lineup-arglist-close)))
 
 (cd "/sshx:yar:/home/tm/web-vue")
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (stylus-mode dumb-jump vue-mode))))
-
+(require 'vue-mode)
 (provide '.emacs)
 ;;; .emacs ends here
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
