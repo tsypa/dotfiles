@@ -128,6 +128,9 @@
 (global-set-key (kbd "<C-S-left>")   'buf-move-left)
 (global-set-key (kbd "<C-S-right>")  'buf-move-right)
 
+(global-set-key (kbd "<C-M v>") 'vue-html-mode)
+(global-set-key (kbd "<C-M j>") 'js-mode)
+
 (require 'tiling)
 (winner-mode)
 (windmove-default-keybindings)
