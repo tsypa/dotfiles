@@ -220,7 +220,7 @@
 (setq tramp-connection-timeout 10)
 ;;; End of tramp setup
 
-(cd "/sshx:astra:/home/tm/largo-web/admin-spa")
+(cd "/sshx:sst:/home/tm/ivasw/isf)
 
 (require 'vue-mode)
 (provide '.emacs)
