@@ -128,8 +128,8 @@
 (global-set-key (kbd "<C-S-left>")   'buf-move-left)
 (global-set-key (kbd "<C-S-right>")  'buf-move-right)
 
-(global-set-key (kbd "<C-M v>") 'vue-html-mode)
-(global-set-key (kbd "<C-M j>") 'js-mode)
+(global-set-key (kbd "<C-M-v>") 'vue-html-mode)
+(global-set-key (kbd "<C-M-j>") 'js-mode)
 
 (require 'tiling)
 (winner-mode)
@@ -215,12 +215,20 @@
   (setq web-mode-code-indent-offset 2))
 (add-hook 'web-mode-hook  'my-web-mode-hook)
 
+
+(add-hook 'css-mode-hook
+          (lambda ()
+            (setq c-indent-offset 2)
+            (setq indent-tabs-mode nil)))
+
 ;;; Tramp setup
-(setq tramp-default-method "ssh")
-(setq tramp-connection-timeout 10)
+;; (setq tramp-default-method "ssh")
+;; (setq tramp-connection-timeout 10)
 ;;; End of tramp setup
 
-(cd "/sshx:sst:/home/tm/ivasw/isf)
+(cd "/sshx:sst:/home/tm/isf")
+
+;; (cd "~/isf")
 
 (require 'vue-mode)
 (provide '.emacs)
