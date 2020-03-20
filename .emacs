@@ -226,10 +226,6 @@
 ;; (setq tramp-connection-timeout 10)
 ;;; End of tramp setup
 
-(cd "/sshx:sst:/home/tm/isf")
-
-;; (cd "~/isf")
-
 (require 'vue-mode)
 (provide '.emacs)
 ;;; .emacs ends here
