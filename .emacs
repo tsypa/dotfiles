@@ -12,9 +12,10 @@
 (setq inhibit-startup-screen 1)
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; (set-default-font "Fixedsys 12")
-;;; (set-default-font "Hack Nerd Font Mono Bold 13")
+;;;(set-default-font "Fixedsys 12")
+;;; (set-default-font "OperatorMono Nerd Font 14")
 (set-default-font "Ubuntu Mono Bold 14")
+;;; (set-default-font "Hermit Bold 13")
 
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -34,8 +35,12 @@
 (add-to-list 'load-path "~/.emacs.d/edit-indirect")
 (add-to-list 'load-path "~/.emacs.d/ssass-mode")
 (add-to-list 'load-path "~/.emacs.d/vue-mode")
+(add-to-list 'load-path "~/.emacs.d/gherkin-mode")
 (add-to-list 'load-path "~/.emacs.d/el-get")
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+(add-to-list 'load-path "~/.emacs.d/yasnippet")
+
+(require 'gherkin-mode)
 
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
@@ -62,6 +67,8 @@
 
 (require 'popup)
 (require 'yasnippet)
+(yas-global-mode 1)
+
 ;; (add-to-list 'yas-snippet-dirs "~/.emacs.d/yasnippet-go")
 ;; add some shotcuts in popup menu mode
 (define-key popup-menu-keymap (kbd "M-n") 'popup-next)
@@ -69,25 +76,6 @@
 (define-key popup-menu-keymap (kbd "<tab>") 'popup-next)
 (define-key popup-menu-keymap (kbd "<backtab>") 'popup-previous)
 (define-key popup-menu-keymap (kbd "M-p") 'popup-previous)
-
-(defun yas/popup-isearch-prompt (prompt choices &optional display-fn)
-  (when (featurep 'popup)
-    (popup-menu*
-     (mapcar
-      (lambda (choice)
-        (popup-make-item
-         (or (and display-fn (funcall display-fn choice))
-             choice)
-         :value choice))
-      choices)
-     :prompt prompt
-     ;; start isearch mode immediately
-     :isearch t
-     )))
-
-(setq yas/prompt-functions '(yas/popup-isearch-prompt yas/no-prompt))
-
-(yas-global-mode)
 
 (require 'company)
 ;(require 'company-go)
@@ -176,9 +164,9 @@
 (require 'fill-column-indicator)
 (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
 (global-fci-mode 1)
-(setq fci-rule-column 80)
+(setq fci-rule-column 128)
 (setq fci-rule-use-dashes 1)
-(setq fci-dash-pattern 0.10)
+(setq fci-dash-pattern 0.1)
 (setq fci-rule-color "#fba922")
 
 (setq-default indent-tabs-mode nil)
@@ -215,7 +203,6 @@
   (setq web-mode-code-indent-offset 2))
 (add-hook 'web-mode-hook  'my-web-mode-hook)
 
-
 (add-hook 'css-mode-hook
           (lambda ()
             (setq c-indent-offset 2)
@@ -226,6 +213,15 @@
 ;; (setq tramp-connection-timeout 10)
 ;;; End of tramp setup
 
+(require 'org-install)
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
+
 (require 'vue-mode)
+(put 'downcase-region 'disabled nil)
+(global-auto-revert-mode t)
+(desktop-save-mode 1)
 (provide '.emacs)
 ;;; .emacs ends here
